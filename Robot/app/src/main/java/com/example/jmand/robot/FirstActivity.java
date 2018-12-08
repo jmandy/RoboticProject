@@ -15,6 +15,8 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
         ImageButton setBtn=(ImageButton)findViewById(R.id.setting);
+        Button milkBtn=(Button)findViewById(R.id.btn1);
+        Button singBtn=(Button)findViewById(R.id.btn2);
 
 
         setBtn.setOnClickListener(new Button.OnClickListener() {
@@ -23,6 +25,22 @@ public class FirstActivity extends AppCompatActivity {
                 Intent intent=new Intent(FirstActivity.this,MainActivity.class);
                 startActivity(intent);
                  }
+        }) ;
+
+        milkBtn.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(FirstActivity.this,MilkActivity.class);
+                startActivity(intent);
+            }
+        }) ;
+
+        singBtn.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(FirstActivity.this,SongActivity.class);
+                startActivity(intent);
+            }
         }) ;
 
 
