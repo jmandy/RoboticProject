@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import app.akexorcist.bluetotohspp.library.BluetoothSPP;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btnConnect = findViewById(R.id.btnConnect); //연결시도
+        ImageButton btnConnect = findViewById(R.id.btnConnect); //연결시도
         btnConnect.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (bt.getServiceState() == BluetoothState.STATE_CONNECTED) {
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnSend = findViewById(R.id.btnSend); //데이터 전송
         btnSend.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                bt.send("Text", true);
+                bt.send("1", true);
             }
         });
     }

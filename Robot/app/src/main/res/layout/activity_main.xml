@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00ffffff"
-    tools:context="space.codejun.btcommunicatoin.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="#3c3f41">
 
-    <Button
+    <ImageButton
+        android:layout_marginLeft="50dp"
+
         android:id="@+id/btnConnect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/blueetooth"
         android:text="연결"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -21,12 +25,31 @@
         android:id="@+id/btnSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="보내기"
+        android:text="보내기1"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="308dp" />
+
+    <Button
+        android:id="@+id/btnSend2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="보내기2"
+
+        app:layout_constraintTop_toBottomOf="@+id/btnConnect"
+        tools:layout_editor_absoluteX="148dp" />
+
+    <Button
+        android:id="@+id/btnSend3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="보내기3"
+        app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnConnect" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
 
 
