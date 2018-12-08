@@ -10,6 +10,7 @@
 
 
     <TextView
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -37,6 +38,7 @@
             android:orientation="vertical">
 
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="10dp"
@@ -48,28 +50,21 @@
                 android:textStyle="bold" />
 
 
-            <EditText
+            <TextView
+
+
                 android:layout_width="match_parent"
                 android:layout_height="77dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:hint="현재 온도"
+                android:hint="°C"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
 
         </LinearLayout>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -104,6 +99,7 @@
 
 
             <EditText
+
                 android:layout_width="match_parent"
                 android:layout_height="77dp"
                 android:layout_marginBottom="10dp"
@@ -115,6 +111,7 @@
                 android:textStyle="bold" />
 
             <Button
+                android:textColor="#ffffff"
                 android:id="@+id/btn4"
                 android:layout_width="100dp"
                 android:layout_height="88dp"
