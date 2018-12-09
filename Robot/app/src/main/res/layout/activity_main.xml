@@ -3,53 +3,106 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:id="@+id/layout"
     android:background="#3c3f41">
 
-    <ImageButton
-        android:layout_marginLeft="50dp"
+    <TextView
 
-        android:id="@+id/btnConnect"
-        android:layout_width="wrap_content"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/blueetooth"
-        android:text="연결"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="♬노래 틀기♬"
+        android:textColor="#8fc552"
+        android:textSize="40dp"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnSend"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="보내기1"
-        app:layout_constraintHorizontal_bias="0.054"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="308dp" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnSend2"
-        android:layout_width="wrap_content"
+        <ImageButton
+            android:id="@+id/Musicbtn1"
+            android:layout_width="176dp"
+            android:layout_height="160dp"
+            android:layout_alignParentTop="true"
+            android:background="#3c3f41"
+            android:src="@drawable/star" />
+
+        <TextView
+
+
+            android:layout_width="match_parent"
+            android:layout_height="123dp"
+            android:layout_marginTop="20dp"
+            android:text="반짝
+            반짝
+            작은별"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="보내기2"
+        android:orientation="horizontal">
 
-        app:layout_constraintTop_toBottomOf="@+id/btnConnect"
-        tools:layout_editor_absoluteX="148dp" />
+        <ImageButton
+            android:id="@+id/Musicbtn2"
+            android:layout_width="176dp"
+            android:layout_height="160dp"
+            android:layout_alignParentTop="true"
+            android:background="#3c3f41"
+            android:src="@drawable/bell" />
 
-    <Button
-        android:id="@+id/btnSend3"
-        android:layout_width="wrap_content"
+        <TextView
+
+
+            android:layout_width="match_parent"
+            android:layout_height="103dp"
+            android:layout_marginTop="20dp"
+            android:text="징글벨"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="보내기3"
-        app:layout_constraintHorizontal_bias="0.945"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnConnect" />
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/Musicbtn3"
+            android:layout_width="176dp"
+            android:layout_height="160dp"
+            android:layout_alignParentTop="true"
+            android:background="#3c3f41"
+            android:src="@drawable/moon" />
+
+        <TextView
+
+
+            android:layout_width="match_parent"
+            android:layout_height="103dp"
+            android:layout_marginTop="20dp"
+            android:text="자장가"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
-
-
