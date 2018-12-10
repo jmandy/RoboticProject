@@ -1,0 +1,197 @@
+#include <SoftwareSerial.h>
+SoftwareSerial BTSerial(2, 3); 
+byte buffer[1024];
+int bufferPosition; 
+//블루투스 버퍼
+int SensorA0 = 0;  
+int LED1 =3;
+int LED2 =4;
+int Sensorvalue = 0;
+#define PIEZO 9
+
+
+unsigned long mil=0;
+int length1 = 15;
+char notes1[] = "ccggaag ffeeddc ggffeed ggffeed ccggaag ffeeddc "; 
+int beats1[] = { 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 4 };
+int tempo1 = 300;
+int length2 = 26;
+char notes2[] = "eeeeeeegcde fffffeeeeddedg";
+int beats2[] = { 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2};
+int tempo2 = 300;
+
+int val=49;
+
+void playTone(int tone, int duration) {
+  for (long i = 0; i < duration * 1000L; i += tone * 2) {
+    digitalWrite(PIEZO, HIGH);
+    delayMicroseconds(tone);
+    digitalWrite(PIEZO, LOW);
+    delayMicroseconds(tone);
+  }
+}
+
+void playNote(char note, int duration) {
+  char names[] = { 'c', 'd', 'e', 'f', 'g', 'a', 'b', 'C' };
+  int tones[] = { 1915, 1700, 1519, 1432, 1275, 1136, 1014, 956 };
+  
+  for (int i = 0; i < 8; i++) {
+    if (names[i] == note) {
+      playTone(tones[i], duration);
+    }
+  }
+}
+
+#define c4 3822 // 261.63Hz 도
+#define d4 3405 // 293.67Hz 레
+#define e4 3034 // 329.63Hz 미
+#define f4 2863 // 349.23Hz 파
+#define g4 2551 // 392.11Hz 솔
+#define g4s 2408 // 415.30Hz 솔#
+#define a4 2273 // 440.11Hz 라
+#define b4 2025 // 493.88Hz 시
+#define c5 1910 // 523.25Hz 도
+#define d5 1703 // 587.33Hz 레
+
+#define d5s 1607 // 584.37Hz 레#
+#define e5 1517 // 659.26Hz 미
+#define f5 1432 // 698.46Hz 파
+#define g5 1276 // 783.99Hz 솔
+#define a5 1136 // 880.11Hz 라
+#define b5 1012 // 987.77Hz 시
+int song_pivot = 0;
+unsigned long mil2 = 0;
+
+int song[] = { e5, d5s, e5, d5s, e5, b4, d5, c5, a4, c4, e4, a4, b4, e4, g4s, b4, c5, e4, e5, d5s, e5, d5s, e5, b4, d5, c5, a4, c4, e4, a4, b4, e4, c5, b4, a4 };
+
+
+
+
+
+void setup() {
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(PIEZO,OUTPUT);
+  pinMode(7,INPUT);
+  BTSerial.begin(9600); 
+  Serial.begin(9600);
+   bufferPosition = 0; 
+}
+ 
+void loop() {
+  //Sensorvalue = analogRead(SensorA0);
+  delay(500);
+  Sensorvalue = digitalRead(8);
+  Serial.print("Sensor: ");
+  Serial.println(Sensorvalue);
+
+if(Serial.available()){
+    Serial.println("Send Value ");
+   BTSerial.write(Serial.read());
+}
+  if (BTSerial.available()) { 
+    // 수신 받은 데이터 저장
+    val = (int)BTSerial.read();
+      Serial.print("Blue ");  
+   Serial.println(val);  
+
+    // 수신된 데이터 시리얼 모니터로 출력
+    Serial.write(val); 
+    // 수신 받은 데이터를 버퍼에 저장
+    buffer[bufferPosition++] = val; 
+    
+    // 문자열 종료 표시
+    if (val == '\n') { 
+      buffer[bufferPosition] = '\0';
+      
+      // 스마트폰으로 문자열 전송
+      BTSerial.write(buffer, bufferPosition);
+      bufferPosition = 0;
+    }  
+  }
+//블루투스
+  
+ 
+if (Sensorvalue ==1){
+  //노래 없앨려면
+if(val==49){
+    for (int i = 0; i < length1; i++) {
+    if (notes1[i] == ' ') {
+      delay(beats1[i] * tempo1);
+    } else {
+      playNote(notes1[i], beats1[i] * tempo1);
+    }
+    delay(tempo1 / 2); 
+  
+  if(digitalRead(7) ==HIGH){
+    Serial.println("Stop");
+    break;}
+  
+  }
+  }
+ else if(val==50){
+   for (int i = 0; i < length2; i++) {
+    if (notes2[i] == ' ') {
+      delay(beats2[i] * tempo2); // rest
+    } else {
+      playNote(notes2[i], beats2[i] * tempo2);
+    }
+    
+    // pause between notes
+    delay(tempo2 / 2); 
+  
+  if(digitalRead(7) ==HIGH){
+    Serial.println("Stop");
+    break;}
+  }
+  
+  
+  }else{
+
+  digitalWrite(PIEZO, HIGH);
+  
+  tone(PIEZO, 988, 250);
+  
+  delay(1000);
+  tone(PIEZO, 988, 250);
+  delay(400);
+  tone(PIEZO, 880, 250);
+  delay(400);
+  tone(PIEZO, 988, 250);
+  delay(1000);
+  
+  tone(PIEZO, 988, 250);
+  delay(400);
+  tone(PIEZO, 880, 250);
+  delay(400);
+  tone(PIEZO, 988, 250);
+  delay(1000);
+  
+  tone(PIEZO, 988, 250);
+  delay(400);
+  tone(PIEZO, 880, 250);
+  delay(400);
+  tone(PIEZO, 784, 1000);
+  delay(1000);
+  tone(PIEZO, 880, 1000);
+  delay(1000);
+}
+}
+}
+void sing(int eum, int isLong) {
+  long lele = 125000;
+
+
+
+  if(isLong == 3) lele = 375000;
+  else if(isLong == 6) lele = 750000;
+
+
+
+  for(long i=0; i< lele ; i+= eum) {
+    digitalWrite(PIEZO, HIGH);
+    delayMicroseconds(eum/2);
+    digitalWrite(PIEZO, LOW);
+    delayMicroseconds(eum/2);
+  }
+}
